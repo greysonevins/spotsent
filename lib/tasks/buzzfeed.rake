@@ -33,6 +33,7 @@ namespace :buzzfeed do
       buzz1.uri = buzz['uri']
       buzz1.image_url = buzz['image'].gsub('.jpg', '_dblbig.jpg')
       buzz1.sentiment_score = sentiment_score['docSentiment']['score']
+      buzz1.title = buzz["title"]
       buzz1.save!
       puts Buzz
       puts sentiment_score

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150418142942) do
+ActiveRecord::Schema.define(version: 20150418214901) do
 
   create_table "buzzs", force: :cascade do |t|
     t.string   "buzz_id"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20150418142942) do
     t.string   "image_url"
     t.string   "username"
     t.string   "uri"
+    t.string   "title"
   end
 
 end
