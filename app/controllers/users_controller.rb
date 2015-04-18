@@ -2,7 +2,6 @@ class UsersController < ApplicationController
 require 'musix_match'
 require 'json'
 MusixMatch::API::Base.api_key = '125703e9fa9d28c1c7f4dc964b16a572'
-AlchemyAPI.key = "7b529a2774d291975d6c1bcf3ac8914f652657f4"
 require 'rest-client'
 
   def spotify
@@ -36,19 +35,23 @@ require 'rest-client'
             puts track_id
          end
      end
+
      response = MusixMatch.get_lyrics(track_id)
      if response.status_code == 200 && lyrics = response.lyrics
         lyrics = lyrics.lyrics_body
          puts lyrics
          end
-    puts RestClient.get 'http://access.alchemyapi.com/calls/text/TextGetTextSentiment', {:params => {:apikey =>'7b529a2774d291975d6c1bcf3ac8914f652657f4', :text => lyrics}}
 
-    AlchemyAPI.configure do |config|
-    config.apikey = "7b529a2774d291975d6c1bcf3ac8914f652657f4"
-    config.output_mode = :xml # not yet supported
-    results = AlchemyAPI.search(:keyword_extraction, text: lyrics)
-    puts results
-    end
+
+     x_obj = RestClient.get 'http://access.alchemyapi.com/calls/text/TextGetTextSentiment', {:params => {:apikey =>'ee6310439b04d809d4521ae5a416b4bace63d448', :text => lyrics, :outputMode => :json}}
+     sent_obj = JSON.parse(x_obj)
+     docsent = sent_obj["docSentiment"]["score"]
+
+     puts docsent
+  
+
+
+
     end
 
     def show 
