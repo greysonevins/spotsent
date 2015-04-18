@@ -30,7 +30,7 @@
 }
 */
 .pin {
-	width: 200px;
+	width: 250px;
 	display: inline-block;
 	background: #FEFEFE;
 	border: 2px solid #FAFAFA;
@@ -105,9 +105,10 @@
 	<header>
 
 			<div class="jumbotron">
+		<center><img src="http://i.imgur.com/e0xrFmp.png?1" /></center>
 		<center><img src="<%= @artist_image %>" ></center>
-    <center><h1>BuzzTuned</h1></center>
-		<center><h2>Sentiment for the song "<%= @title %>" by <%= @artist %> is <%= @docsent %>  </h2></center>
+    <center><h6><%=@docsent%></h6></center>
+		<center><h2>Here are 4 BuzzFeed Articles based on the mood of your song "<%= @title %>" by <%= @artist %></h2></center>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -118,13 +119,13 @@
 
 <div id="wrapper">
 	<div id="columns">
-		<% @buzzes.take(5).each do |buzz| %>
+		<% @buzzes.take(4).each do |buzz| %>
 		<div class="pin" />
 			
 			<a href = "http://www.buzzfeed.com/<%= buzz.username %>/<%= buzz.uri %>" target="_blank"><img src="<%=buzz.image_url%>"></a>
-			<h2> <%=buzz.sentiment_score%></h2>
+			<h2> <%=buzz.title%></h2>
 			<p>
-				<%=buzz.uri%>
+				<%=buzz.sentiment_score%>
 			</p>
 		</div>
 		<% end %>

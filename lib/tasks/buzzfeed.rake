@@ -25,7 +25,7 @@ namespace :buzzfeed do
       #puts buzz_title
       #puts buzz_desc 
       
-      sentiment_score = JSON.parse(RestClient.get 'http://access.alchemyapi.com/calls/text/TextGetTextSentiment', {:params => {:apikey =>'f1be26276fc7908c337081b3dd9c54b3b0059765', :text => buzz_desc, :outputMode => :json}})
+      sentiment_score = JSON.parse(RestClient.get 'http://access.alchemyapi.com/calls/text/TextGetTextSentiment', {:params => {:apikey =>'632df305942c37cac9034c08e06b3570b66bbc3d', :text => buzz_desc, :outputMode => :json}})
      #uts sentiment_score 
       
       buzz1 = Buzz.find_or_create_by(buzz_id: buzz['id'])

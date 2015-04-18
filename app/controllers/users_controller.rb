@@ -48,7 +48,7 @@ require 'rest-client'
          end
 
 
-     x_obj = RestClient.get 'http://access.alchemyapi.com/calls/text/TextGetTextSentiment', {:params => {:apikey =>'f1be26276fc7908c337081b3dd9c54b3b0059765', :text => lyrics, :outputMode => :json}}
+     x_obj = RestClient.get 'http://access.alchemyapi.com/calls/text/TextGetTextSentiment', {:params => {:apikey =>'632df305942c37cac9034c08e06b3570b66bbc3d', :text => lyrics, :outputMode => :json}}
      sent_obj = JSON.parse(x_obj)
      docsent = sent_obj["docSentiment"]["score"]
 
