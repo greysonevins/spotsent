@@ -22,10 +22,11 @@ require 'rest-client'
     obj = JSON.parse(t)
     title = obj["name"]
     artist = obj["artists"][0]["name"]
+    images = obj["album"]["images"][0]["url"]
     puts artist
     track_id = "0"
     lyrics = "x"
-  
+    puts images
     
  
     response = MusixMatch.search_track(:q_track => title, :q_artist => artist)
@@ -54,9 +55,10 @@ require 'rest-client'
      puts docsent
      @docsent = docsent
      
-    @buzzes = Buzz.find_by_sql(["SELECT * FROM buzzs WHERE sentiment_score IS NOT NULL  ORDER BY ABS(? - sentiment_score)", @docsent.to_f])
-
-    
+    @buzzes = Buzz.find_by_sql(["SELECT * FROM buzzs WHERE sentiment_score IS NOT NULL ORDER BY ABS(? - sentiment_score)", @docsent.to_f])
+    @artist = obj["artists"][0]["name"]
+    @title  = obj["name"]
+    @artist_image = obj["album"]["images"][0]["url"]
     end
 
     def show 

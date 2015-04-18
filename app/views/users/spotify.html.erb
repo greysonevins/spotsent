@@ -15,16 +15,16 @@
 	margin: 50px auto;
 }
 
-#columns {
-	-webkit-column-count: 3;
-	-webkit-column-gap: 10px;
-	-webkit-column-fill: auto;
-	-moz-column-count: 3;
-	-moz-column-gap: 10px;
-	-moz-column-fill: auto;
-	column-count: 3;
-	column-gap: 15px;
-	column-fill: auto;
+#rows {
+	-webkit-row-count: 3;
+	-webkit-row-gap: 10px;
+	-webkit-row-fill: auto;
+	-moz-row-count: 3;
+	-moz-row-gap: 10px;
+	-moz-row-fill: auto;
+	row-count: 3;
+	row-gap: 15px;
+	row-fill: auto;
 }
 
 .pin {
@@ -35,7 +35,7 @@
 	margin: 0 2px 15px;
 	-webkit-column-break-inside: avoid;
 	-moz-column-break-inside: avoid;
-	column-break-inside: avoid;
+	row-break-inside: avoid;
 	padding: 15px;
 	padding-bottom: 5px;
 	background: -webkit-linear-gradient(45deg, #FFF, #F9F9F9);
@@ -61,7 +61,7 @@
 }
 
 @media (min-width: 960px) {
-	#columns {
+	#rows {
 		-webkit-column-count: 4;
 		-moz-column-count: 4;
 		column-count: 4;
@@ -69,7 +69,7 @@
 }
 
 @media (min-width: 1100px) {
-	#columns {
+	#rows {
 		-webkit-column-count: 5;
 		-moz-column-count: 5;
 		column-count: 5;
@@ -100,9 +100,11 @@
     <![endif]-->
   </head>
 	<header>
+
 			<div class="jumbotron">
+		<center><img src="<%= @artist_image %>" ></center>
     <center><h1>BuzzTuned</h1></center>
-		<center><h2>Sentiment for this song is <%= @docsent %>  </h2></center>
+		<center><h2>Sentiment for the song "<%= @title %>" by <%= @artist %> is <%= @docsent %>  </h2></center>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -112,11 +114,12 @@
   <body>
 
 <div id="wrapper">
-	<div id="columns">
+	<div id="rows">
 		<% @buzzes.each do |buzz| %>
 		<div class="pin" />
-
+			
 			<a href = "http://www.buzzfeed.com/<%= buzz.username %>/<%= buzz.uri %>" target="_blank"><img src="<%=buzz.image_url%>"></a>
+			<h2> <%=buzz.sentiment_score%></h2>
 			<p>
 				<%=buzz.uri%>
 			</p>
