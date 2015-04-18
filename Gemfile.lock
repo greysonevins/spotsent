@@ -36,6 +36,9 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    alchemy-api-rb (0.5.2)
+      excon (~> 0.28)
+      faraday (~> 0.9.0)
     arel (6.0.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -54,6 +57,7 @@ GEM
     domain_name (0.5.24)
       unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
+    excon (0.45.2)
     execjs (2.5.2)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
@@ -62,6 +66,9 @@ GEM
     hashie (3.4.1)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
+    httparty (0.13.3)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     jbuilder (2.2.13)
       activesupport (>= 3.0.0, < 5)
@@ -82,6 +89,9 @@ GEM
     multi_json (1.11.0)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    musix_match (0.2.0)
+      httparty (>= 0.6.1)
+      json
     netrc (0.10.3)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
@@ -176,11 +186,14 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  alchemy-api-rb
   byebug
   coffee-rails (~> 4.1.0)
   jbuilder (~> 2.0)
   jquery-rails
+  musix_match
   rails (= 4.2.1)
+  rest-client
   rspotify
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
