@@ -11,13 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150418082557) do
+ActiveRecord::Schema.define(version: 20150418142942) do
 
   create_table "buzzs", force: :cascade do |t|
     t.string   "buzz_id"
-    t.string   "sentiment_score"
+    t.float    "sentiment_score"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "image_url"
+    t.string   "username"
+    t.string   "uri"
   end
 
 end

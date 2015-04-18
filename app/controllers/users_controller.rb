@@ -9,6 +9,8 @@ require 'rest-client'
 
   def spotify
     spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
+
+
     spotify_user.saved_tracks
     # hash = spotify_user.to_hash
     # spotify_user = RSpotify::User.new(hash)
@@ -45,15 +47,15 @@ require 'rest-client'
          end
 
 
-     x_obj = RestClient.get 'http://access.alchemyapi.com/calls/text/TextGetTextSentiment', {:params => {:apikey =>'ee6310439b04d809d4521ae5a416b4bace63d448', :text => lyrics, :outputMode => :json}}
+     x_obj = RestClient.get 'http://access.alchemyapi.com/calls/text/TextGetTextSentiment', {:params => {:apikey =>'f1be26276fc7908c337081b3dd9c54b3b0059765', :text => lyrics, :outputMode => :json}}
      sent_obj = JSON.parse(x_obj)
      docsent = sent_obj["docSentiment"]["score"]
 
-    score(@sent_analy)
-
-     redirect_to  home_show_path
-
+     puts docsent
+     @docsent = docsent
      
+    @buzzes = Buzz.find_by_sql(["SELECT * FROM buzzs WHERE sentiment_score IS NOT NULL  ORDER BY ABS(? - sentiment_score)", @docsent.to_f])
+
     
     end
 

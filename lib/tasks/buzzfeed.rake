@@ -2,8 +2,8 @@ require 'rest-client'
 require 'json'
 # require 'alchemy-api-rb'
 
-days_ago = '1429265820'
-today = '1429338017'
+days_ago = '1429279230'
+today = '1429322430'
 buzzes_url = 'http://www.buzzfeed.com/buzzfeed/api/buzzes?since=' + days_ago + '&until=' + today + '&session_key=0cbc75f25b34eaef2a8bc1b3e29af94d730cfaafa1ee01152aa6f54eb5f3042chackathon5'
 
 
@@ -18,13 +18,24 @@ namespace :buzzfeed do
 
     buzzes = JSON.parse(RestClient.get(buzzes_url))['buzzes']
   
-    buzzes.each do |buzz|
+    buzzes[0..200].each do |buzz|
       buzz_desc = buzz['title'] + ' ' + buzz['description']
-      puts buzz_desc 
+
+      buzz_title = buzz['title']
+      #puts buzz_title
+      #puts buzz_desc 
       
-      sentiment_score = JSON.parse(RestClient.get 'http://access.alchemyapi.com/calls/text/TextGetTextSentiment', {:params => {:apiKey => 'ca9a90e1b69c582d2856b6baa8f27b217e3fa58d', :text => buzz_desc, :outputMode => :json}})
-     puts sentiment_score 
-      Buzz.create!(buzz_id: buzz['id'], sentiment_score: sentiment_score['docSentiment']['score'])
+      sentiment_score = JSON.parse(RestClient.get 'http://access.alchemyapi.com/calls/text/TextGetTextSentiment', {:params => {:apikey =>'f1be26276fc7908c337081b3dd9c54b3b0059765', :text => buzz_desc, :outputMode => :json}})
+     #uts sentiment_score 
+      
+      buzz1 = Buzz.find_or_create_by(buzz_id: buzz['id'])
+      buzz1.username = buzz['username']
+      buzz1.image_url = buzz['image'].gsub('.jpg', '_dblbig.jpg')
+      buzz1.sentiment_score = sentiment_score['docSentiment']['score']
+      buzz1.save!
+      puts Buzz
+      puts sentiment_score
+      sleep(2.0)
 
     end
   

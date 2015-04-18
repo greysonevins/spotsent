@@ -192,6 +192,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord
   alchemy-api-rb
   bootstrap-sass
   byebug

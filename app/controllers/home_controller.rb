@@ -6,7 +6,7 @@ class HomeController < ApplicationController
  	@sent_analy = "097"
   def index
   end
-
+ 
 
   def show
     
@@ -18,22 +18,22 @@ class HomeController < ApplicationController
     #         v = track.to_json
     #         x = JSON.parse(v)
     #         track_id = x["track_id"]
-    # 	         puts track_id
+    # #         puts track_id
     #      end
-     # end
+     end
 
-     # response = MusixMatch.get_lyrics(track_id)
-     # if response.status_code == 200 && lyrics = response.lyrics
-     #    lyrics = lyrics.lyrics_body
-     #     puts lyrics
-     #     end
+     response = MusixMatch.get_lyrics(track_id)
+     if response.status_code == 200 && lyrics = response.lyrics
+        lyrics = lyrics.lyrics_body
+         puts lyrics
+         end
 
 
-     # x_obj = RestClient.get 'http://access.alchemyapi.com/calls/text/TextGetTextSentiment', {:params => {:apikey =>'ee6310439b04d809d4521ae5a416b4bace63d448', :text => lyrics, :outputMode => :json}}
-     # sent_obj = JSON.parse(x_obj)
-     # docsent = sent_obj["docSentiment"]["score"]
+     x_obj = RestClient.get 'http://access.alchemyapi.com/calls/text/TextGetTextSentiment', {:params => {:apikey =>'f1be26276fc7908c337081b3dd9c54b3b0059765', :text => lyrics, :outputMode => :json}}
+     sent_obj = JSON.parse(x_obj)
+     docsent = sent_obj["docSentiment"]["score"]
 
-     # @sent_analy = docsent
+     @sent_analy = docsent
   end
 	
 end
