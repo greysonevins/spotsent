@@ -2,7 +2,7 @@ require 'rest-client'
 require 'json'
 # require 'alchemy-api-rb'
 
-days_ago = '1429279230'
+days_ago = '1429288230'
 today = '1429322430'
 buzzes_url = 'http://www.buzzfeed.com/buzzfeed/api/buzzes?since=' + days_ago + '&until=' + today + '&session_key=0cbc75f25b34eaef2a8bc1b3e29af94d730cfaafa1ee01152aa6f54eb5f3042chackathon5'
 
@@ -30,6 +30,7 @@ namespace :buzzfeed do
       
       buzz1 = Buzz.find_or_create_by(buzz_id: buzz['id'])
       buzz1.username = buzz['username']
+      buzz1.uri = buzz['uri']
       buzz1.image_url = buzz['image'].gsub('.jpg', '_dblbig.jpg')
       buzz1.sentiment_score = sentiment_score['docSentiment']['score']
       buzz1.save!
