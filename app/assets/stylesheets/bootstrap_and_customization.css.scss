@@ -8,9 +8,8 @@ $navbar-height: 45px;
 $navbar-default-bg: white;
 $navbar-default-brand-color:  #c0392b;
 $brand-primary: #c0392b;
-$btn-btn-default-btn-lg: #FF1300;
 
-@import "bootstrap-sprockets";
+@import 'bootstrap-sprockets';
 @import 'bootstrap';
 
 .center {

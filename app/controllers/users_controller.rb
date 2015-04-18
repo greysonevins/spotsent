@@ -1,11 +1,13 @@
 class UsersController < ApplicationController
+    attr_accessor :sent_analy
+
 require 'musix_match'
 require 'json'
 MusixMatch::API::Base.api_key = '125703e9fa9d28c1c7f4dc964b16a572'
 require 'rest-client'
 
-  def spotify
 
+  def spotify
     spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
     spotify_user.saved_tracks
     # hash = spotify_user.to_hash
@@ -21,8 +23,8 @@ require 'rest-client'
     puts artist
     track_id = "0"
     lyrics = "x"
-    # playlist = spotify_user.create_playlist!('my-awesome-playlist')
-    redirect_to  home_show_path
+  
+    
  
     response = MusixMatch.search_track(:q_track => title, :q_artist => artist)
     
@@ -47,13 +49,17 @@ require 'rest-client'
      sent_obj = JSON.parse(x_obj)
      docsent = sent_obj["docSentiment"]["score"]
 
-     puts docsent
-  
+    score(@sent_analy)
 
+     redirect_to  home_show_path
 
-
+     
+    
     end
 
     def show 
+       
+
     end
+    
 end
