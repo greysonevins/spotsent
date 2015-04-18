@@ -111,25 +111,20 @@
 	</header>
   <body>
 
-
-	<div> 
-		<h1>hey</h1>
-		<img />
-	</div>
-
-
-<% @buzzes.each do |buzz| %>
 <div id="wrapper">
 	<div id="columns">
-		<div class="pin">
-			<img src="<%=buzz.image_url%>"/>
+		<% @buzzes.each do |buzz| %>
+		<div class="pin" />
+
+			<a href = "http://www.buzzfeed.com/<%= buzz.username %>/<%= buzz.uri %>" target="_blank"><img src="<%=buzz.image_url%>"></a>
 			<p>
-				<%=buzz.uri%>s
+				<%=buzz.uri%>
 			</p>
 		</div>
+		<% end %>
 	</div>
 </div>
-<% end %>
+
     </div>
   </div>
   </body>
