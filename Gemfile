@@ -16,12 +16,17 @@ gem 'rspotify'
 gem 'musix_match'
 gem 'alchemy-api-rb', :require => 'alchemy_api'
 gem 'rest-client'
-gem 'pg', group: :production
 
 
 group :development, :test do
 	  gem 'sqlite3'
-	end
+end
+
+group :production do 
+
+	gem 'pg'
+end
+
 
 group :development, :test do
   gem 'byebug'
