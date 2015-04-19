@@ -119,7 +119,7 @@
 
 <div id="wrapper">
 	<div id="columns">
-		<% @buzzes.take(4).each do |buzz| %>
+		<% @buzzes.take(8).each do |buzz| %>
 		<div class="pin" />
 			
 			<a href = "http://www.buzzfeed.com/<%= buzz.username %>/<%= buzz.uri %>" target="_blank"><img src="<%=buzz.image_url%>"></a>
