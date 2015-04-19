@@ -17,9 +17,14 @@ gem 'musix_match'
 gem 'alchemy-api-rb', :require => 'alchemy_api'
 gem 'rest-client'
 gem 'pg', group: :production
+
+
+group :development, :test do
+	  gem 'sqlite3'
+	end
+
 group :development, :test do
   gem 'byebug'
-  gem 'sqlite3'
   gem 'web-console', '~> 2.0'
 
   gem 'spring'
