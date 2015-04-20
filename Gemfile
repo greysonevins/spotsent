@@ -18,7 +18,7 @@ gem 'alchemy-api-rb', :require => 'alchemy_api'
 gem 'rest-client'
 
 group :production do 
-		gem 'pg'
+  gem 'pg'
 end
 
 
