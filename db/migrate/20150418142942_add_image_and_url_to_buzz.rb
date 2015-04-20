@@ -7,5 +7,6 @@ class AddImageAndUrlToBuzz < ActiveRecord::Migration
 
   end
    add_index :title, :unique => true
-  end
 end
+
+
