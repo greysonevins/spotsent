@@ -8,9 +8,6 @@ Bundler.require(*Rails.groups)
 
 module SpotifySent
   class Application < Rails::Application
-
-    RSpotify::authenticate("386c400d39ec46218857903fac22f401", "7fca20b74d694e23b86dfbb6dc3208e5")
-
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
